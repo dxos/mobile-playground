@@ -1,21 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import swarm from '@geut/discovery-swarm-webrtc';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
+  IonTabs,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonLabel, IonIcon
 } from '@ionic/react';
+import { home } from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-import { config } from './video/config';
+import swarm from '@geut/discovery-swarm-webrtc';
+import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,11 +32,11 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { config } from './video/config';
+
 const App: React.FC = () => {
-  const [selfStream, setSelfStream] = useState<any>(undefined);
   const [connections, setConnections] = useState<any>([]);
   const [streams, setStreams] = useState<any>([]);
-  const [arbitraryData, setArbitraryData] = useState<any>('');
   const [receivedData, setReceivedData] = useState<any>('');
 
   useEffect(() => {
@@ -74,29 +70,27 @@ const App: React.FC = () => {
       });
     });
   }, []);
-  
+
+  const handleSendData = (data) => {
+    connections.forEach(connection => connection.peer.send(data));
+  };
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/connections" component={() => <Tab1 connections={connections} />} exact={true} />
-            <Route path="/chat" component={Tab2} exact={true} />
-            <Route path="/video" component={Tab3} />
-            <Route path="/" render={() => <Redirect to="/connections" />} exact={true} />
+            <Route
+              path="/"
+              component={() => <Home connections={connections} receivedData={receivedData} onReceivedDataRead={() => setReceivedData('')} onSendData={handleSendData}/>}
+              exact={true}
+            />
+            <Redirect to="/" />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="connections" href="/connections">
-              <IonIcon icon={triangle} />
-              <IonLabel>Connections</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="chat" href="/chat">
-              <IonIcon icon={ellipse} />
-              <IonLabel>Chat</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="video" href="/video">
-              <IonIcon icon={square} />
-              <IonLabel>Video</IonLabel>
+            <IonTabButton tab="/" href="/">
+              <IonIcon icon={home} />
+              <IonLabel>Home</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
