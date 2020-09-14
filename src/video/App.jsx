@@ -102,7 +102,7 @@ export const App = () => {
   See https://github.com/facebook/react/issues/11163 for more details
   Hence VideoFix component, a simple wrapper around the 'video' tag
 */
-const VideoFix = ({ srcObject, ...rest }) => {
+export const VideoFix = ({ srcObject, ...rest }) => {
   const el = useRef(null);
   useEffect(() => {
     if (el.current) {

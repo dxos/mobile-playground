@@ -15,10 +15,10 @@ import {
 } from '@ionic/react';
 
 import './Home.css';
+import { VideoFix } from '../video/App';
 
 
-const Home: React.FC<any> = ({connections, onSendData, receivedData, onReceivedDataRead}) => {
-  const [selfStream, setSelfStream] = useState<any>(undefined);
+const Home: React.FC<any> = ({connections, onSendData, receivedData, onReceivedDataRead, selfStream, onEnableVideo, streams}) => {
   const [showToast, setShowToast] = useState(false);
   const [arbitraryData, setArbitraryData] = useState<any>('');
 
@@ -70,8 +70,20 @@ const Home: React.FC<any> = ({connections, onSendData, receivedData, onReceivedD
         />
 
         <IonItemDivider class="divider">
-          <IonLabel>Video</IonLabel>
+          <IonLabel>Your camera</IonLabel>
         </IonItemDivider>
+
+        <IonButton expand="block" disabled={!!selfStream} onClick={onEnableVideo}>Enable camera</IonButton>
+
+        {selfStream && <VideoFix style={{ transform: 'scaleX(-1)', width: '256px px', height: '256px' }} muted={true} autoPlay srcObject={selfStream} />}
+
+        <IonItemDivider class="divider">
+          <IonLabel>Incoming video</IonLabel>
+          <IonBadge slot="start">{streams.length}</IonBadge>
+        </IonItemDivider>
+
+        {streams.map((stream, i) => <VideoFix key={i} autoPlay srcObject={stream.mediaStream} style={{ width: '256px', height: '256px' }}/>)}
+
       </IonContent>
     </IonPage>
   );

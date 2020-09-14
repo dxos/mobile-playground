@@ -38,13 +38,12 @@ const App: React.FC = () => {
   const [connections, setConnections] = useState<any>([]);
   const [streams, setStreams] = useState<any>([]);
   const [receivedData, setReceivedData] = useState<any>('');
+  const [selfStream, setSelfStream] = useState<any>(undefined);
 
   useEffect(() => {
     const sw = swarm({
       bootstrap: [config.signalingServer],
     });
-
-    sw.join(Buffer.from('some-topic'));
 
     sw.on('connection', (peer: any, info: any) => {
       console.log('New connection', peer, info);
@@ -69,11 +68,51 @@ const App: React.FC = () => {
         return connections.filter(item => item.connectionId !== info.id.toString());
       });
     });
+
+    sw.on('candidates-updated', (channel, candidates) => {
+      console.log('candidates-updated', channel, candidates);
+    })
+
+    sw.on('handshaking', (connection, info) => {
+      console.log('handshaking', connection, info);
+    });
+
+    sw.on('info', (info) => {
+      console.log('on info', info);
+    });
+
+    sw.on('error', (error) => {
+      console.log('on error', error);
+    });
+
+    console.log(`Trying to join ${config.signalingServer}`)
+    sw.join(Buffer.from('some-topic'));
   }, []);
+
+  useEffect(() => {
+    if (selfStream === undefined) {
+      return;
+    }
+    connections.forEach(connection => {
+      try {
+        connection.peer.addStream(selfStream);
+      } catch (e) {
+        if (e.code !== 'ERR_SENDER_ALREADY_ADDED') {
+          throw e;
+        }
+      }
+    });
+  }, [selfStream, connections]);
 
   const handleSendData = (data) => {
     connections.forEach(connection => connection.peer.send(data));
   };
+
+  const handleEnableVideo = () => navigator.getUserMedia(
+    { video: true, audio: true },
+    (stream) => setSelfStream(stream),
+    console.error,
+  );
 
   return (
     <IonApp>
@@ -82,7 +121,15 @@ const App: React.FC = () => {
           <IonRouterOutlet>
             <Route
               path="/"
-              component={() => <Home connections={connections} receivedData={receivedData} onReceivedDataRead={() => setReceivedData('')} onSendData={handleSendData}/>}
+              component={() => <Home
+                connections={connections}
+                receivedData={receivedData}
+                onReceivedDataRead={() => setReceivedData('')}
+                onSendData={handleSendData}
+                streams={streams}
+                selfStream={selfStream}
+                onEnableVideo={handleEnableVideo}
+              />}
               exact={true}
             />
             <Redirect to="/" />
