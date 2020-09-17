@@ -1,0 +1,10 @@
+.divider {
+  margin-top: 25px;
+}
+
+.copyable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}

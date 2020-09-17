@@ -14,7 +14,7 @@ import {
   IonToast
 } from '@ionic/react';
 
-import './Home.css';
+import './Common.css';
 import { VideoFix } from '../video/App';
 
 

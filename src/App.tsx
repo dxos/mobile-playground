@@ -8,10 +8,12 @@ import {
   IonTabButton,
   IonLabel, IonIcon
 } from '@ionic/react';
-import { home } from 'ionicons/icons';
+import { home, checkbox, gift } from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
 import swarm from '@geut/discovery-swarm-webrtc';
 import Home from './pages/Home';
+import Redeem from './pages/Redeem';
+import Tasks from './pages/Tasks';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -69,13 +71,13 @@ const App: React.FC = () => {
       });
     });
 
-    sw.on('candidates-updated', (channel, candidates) => {
-      console.log('candidates-updated', channel, candidates);
-    })
+    // sw.on('candidates-updated', (channel, candidates) => {
+    //   console.log('candidates-updated', channel, candidates);
+    // })
 
-    sw.on('handshaking', (connection, info) => {
-      console.log('handshaking', connection, info);
-    });
+    // sw.on('handshaking', (connection, info) => {
+    //   console.log('handshaking', connection, info);
+    // });
 
     sw.on('info', (info) => {
       console.log('on info', info);
@@ -120,7 +122,7 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Route
-              path="/"
+              path="/home"
               component={() => <Home
                 connections={connections}
                 receivedData={receivedData}
@@ -132,12 +134,30 @@ const App: React.FC = () => {
               />}
               exact={true}
             />
-            <Redirect to="/" />
+            <Route
+              path="/tasks"
+              component={() => <Tasks/>}
+              exact={true}
+            />
+            <Route
+              path="/redeem"
+              component={() => <Redeem/>}
+              exact={true}
+            />
+            <Redirect to="/home" />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="/" href="/">
+            <IonTabButton tab="home" href="/home">
               <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tasks" href="/tasks">
+              <IonIcon icon={checkbox} />
+              <IonLabel>Tasks</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="redeem" href="/redeem">
+              <IonIcon icon={gift} />
+              <IonLabel>Redeem & Profile</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
