@@ -16,7 +16,7 @@ function PinItemText ({ pin }) {
 
 function CodeItemText ({ code }) {
   return (<>
-    <p>Code: {code}</p>
+    <p>Code:</p>
     <p className="copyable">{code}</p>
   </>);
 }
