@@ -47,7 +47,7 @@ export default function Tasks({ partyKey }) {
     <div>
       <IonItem>
         <IonLabel position="floating">New Task</IonLabel>
-        <IonInput value={newTask} onIonChange={e => setNewTask(e.detail.value)}></IonInput>
+        <IonInput value={newTask} onIonChange={e => setNewTask(e.detail.value!)}></IonInput>
       </IonItem>
       <IonButton size="small" disabled={!newTask} onClick={handleAdd}>Add</IonButton>
       <ul>

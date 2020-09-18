@@ -43,7 +43,7 @@ export default function RedeemContainer () {
             <IonLabel position="floating">Paste your Invitation Code Below</IonLabel>
           </IonItem>
           <IonItem>
-            <IonTextarea value={invitationCode} onIonChange={e => setInvitationCode(e.detail.value)}></IonTextarea>
+            <IonTextarea value={invitationCode} onIonChange={e => setInvitationCode(e.detail.value!)}></IonTextarea>
           </IonItem>
           <IonButton expand="block" disabled={!invitationCode} onClick={handleEnterInvitationCode}>Send</IonButton>
         </>    
@@ -53,7 +53,7 @@ export default function RedeemContainer () {
         <>
           <IonItem>
             <IonLabel position="floating">Enter the PIN number</IonLabel>
-            <IonInput value={pinCode} onIonChange={e => setPinCode(e.detail.value)}></IonInput>
+            <IonInput value={pinCode} onIonChange={e => setPinCode(e.detail.value!)}></IonInput>
           </IonItem>
           <IonButton expand="block" disabled={!pinCode} onClick={handleEnterPinCode}>Send</IonButton>
         </>

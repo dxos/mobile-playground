@@ -38,9 +38,11 @@ function Invite ({ party }) {
   );
 }
 
+type Invitation = {id: number}
+
 export default function InviteDialog ({ partyKey, onClose }) {
   const party = useParty(partyKey);
-  const [invitations, setInvitations] = useState([]);
+  const [invitations, setInvitations] = useState<Invitation[]>([]);
 
   const handleAddInvitation = () => {
     setInvitations([{ id: Date.now() }, ...invitations]);
