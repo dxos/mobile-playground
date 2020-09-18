@@ -4,14 +4,15 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent,
-  IonItemDivider,
-  IonLabel
+  IonContent
 } from '@ionic/react';
 
-import TaskApp from './App';
+import { useProfile } from '@dxos/react-client';
 
-const Redeem: React.FC<any> = () => {
+import Lists from './Lists';
+
+const TasksPage: React.FC<any> = () => {
+  const profile = useProfile();
 
   return (
     <IonPage>
@@ -26,10 +27,10 @@ const Redeem: React.FC<any> = () => {
             <IonTitle size="large">Tasks</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <TaskApp />
+        {profile ? <Lists /> : <p>Register first</p>}
       </IonContent>
     </IonPage>
   );
 };
 
-export default Redeem;
+export default TasksPage;

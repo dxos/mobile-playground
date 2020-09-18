@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 
 import { 
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonItem,
-  IonInput,
   IonLabel,
   IonButton,
-  IonBadge,
   IonItemDivider,
-  IonToast
 } from '@ionic/react';
 
 import { useParty, useInvitation } from '@dxos/react-client';

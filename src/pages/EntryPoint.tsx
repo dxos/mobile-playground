@@ -9,9 +9,9 @@ import {
 } from '@ionic/react';
 import { home, checkbox, gift } from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
-import VideoComponent from './Video/VideoComponent';
-import Tasks from './Tasks/Tasks';
-import RedeemAndProfile from './RedeemAndProfile/RedeemAndProfile';
+import VideoPage from './Video/VideoPage';
+import TasksPage from './Tasks/TasksPage';
+import RedeemAndProfilePage from './RedeemAndProfile/RedeemAndProfilePage';
 
 import './Common.css';
 
@@ -22,17 +22,17 @@ const EntryPoint: React.FC = () => {
         <IonRouterOutlet>
           <Route
             path="/home"
-            component={() => <VideoComponent />}
+            component={() => <VideoPage />}
             exact={true}
           />
           <Route
             path="/tasks"
-            component={() => <Tasks/>}
+            component={() => <TasksPage/>}
             exact={true}
           />
           <Route
             path="/redeem"
-            component={() => <RedeemAndProfile/>}
+            component={() => <RedeemAndProfilePage/>}
             exact={true}
           />
           <Redirect to="/home" />

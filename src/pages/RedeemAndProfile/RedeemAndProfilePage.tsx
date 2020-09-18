@@ -16,7 +16,7 @@ import RedeemContainer from './Redeem';
 import SignUp from './SignUp';
 
 
-const RedeemAndProfile: React.FC<any> = () => {
+const RedeemAndProfilePage: React.FC<any> = () => {
   const profile = useProfile();
   const client = useClient();
   
@@ -55,4 +55,4 @@ const RedeemAndProfile: React.FC<any> = () => {
   );
 };
 
-export default RedeemAndProfile;
+export default RedeemAndProfilePage;

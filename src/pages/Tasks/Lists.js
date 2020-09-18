@@ -16,7 +16,7 @@ import {
 import Tasks from './Tasks';
 import Invite from './Invite';
 
-export default function Main () {
+export default function Lists () {
   const [selected, setSelected] = useState();
   const client = useClient();
   const parties = useParties();

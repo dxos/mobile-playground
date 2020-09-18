@@ -10,7 +10,7 @@ import {
 
 import { useInvitationRedeemer, useProfile } from '@dxos/react-client';
 
-export default function RedeemDialog () {
+export default function RedeemContainer () {
   const profile = useProfile();
   const [redeemCode, setPin] = useInvitationRedeemer({ onDone: () => setStep(2), onError: () => setError(true) });
   const [step, setStep] = useState(0);
