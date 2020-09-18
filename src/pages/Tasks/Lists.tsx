@@ -3,11 +3,6 @@ import React, { useState } from 'react';
 import { useClient, useParties } from '@dxos/react-client';
 
 import { 
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
   IonItemDivider,
   IonLabel,
   IonButton
@@ -16,7 +11,7 @@ import {
 import Tasks from './Tasks';
 import Invite from './Invite';
 
-export default function Main () {
+export default function Lists () {
   const [selected, setSelected] = useState();
   const client = useClient();
   const parties = useParties();

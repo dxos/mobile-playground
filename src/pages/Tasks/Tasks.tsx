@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 
-import { useParty, useModel } from '@dxos/react-client';
+import { useModel } from '@dxos/react-client';
 import { createId } from '@dxos/crypto';
 
 import { 
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonItemDivider,
   IonLabel,
   IonItem,
   IonButton,
@@ -19,7 +13,6 @@ import {
 const TASK_TYPE = 'oh.my.task';
 
 export default function Tasks({ partyKey }) {
-  const party = useParty(partyKey);
   const [newTask, setNewTask] = useState('');
   const model = useModel({ options: { topic: partyKey, type: TASK_TYPE } });
 
@@ -54,7 +47,7 @@ export default function Tasks({ partyKey }) {
     <div>
       <IonItem>
         <IonLabel position="floating">New Task</IonLabel>
-        <IonInput value={newTask} onIonChange={e => setNewTask(e.detail.value)}></IonInput>
+        <IonInput value={newTask} onIonChange={e => setNewTask(e.detail.value!)}></IonInput>
       </IonItem>
       <IonButton size="small" disabled={!newTask} onClick={handleAdd}>Add</IonButton>
       <ul>

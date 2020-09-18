@@ -10,7 +10,7 @@ import {
 
 import { useInvitationRedeemer, useProfile } from '@dxos/react-client';
 
-export default function RedeemDialog () {
+export default function RedeemContainer () {
   const profile = useProfile();
   const [redeemCode, setPin] = useInvitationRedeemer({ onDone: () => setStep(2), onError: () => setError(true) });
   const [step, setStep] = useState(0);
@@ -43,7 +43,7 @@ export default function RedeemDialog () {
             <IonLabel position="floating">Paste your Invitation Code Below</IonLabel>
           </IonItem>
           <IonItem>
-            <IonTextarea value={invitationCode} onIonChange={e => setInvitationCode(e.detail.value)}></IonTextarea>
+            <IonTextarea value={invitationCode} onIonChange={e => setInvitationCode(e.detail.value!)}></IonTextarea>
           </IonItem>
           <IonButton expand="block" disabled={!invitationCode} onClick={handleEnterInvitationCode}>Send</IonButton>
         </>    
@@ -53,7 +53,7 @@ export default function RedeemDialog () {
         <>
           <IonItem>
             <IonLabel position="floating">Enter the PIN number</IonLabel>
-            <IonInput value={pinCode} onIonChange={e => setPinCode(e.detail.value)}></IonInput>
+            <IonInput value={pinCode} onIonChange={e => setPinCode(e.detail.value!)}></IonInput>
           </IonItem>
           <IonButton expand="block" disabled={!pinCode} onClick={handleEnterPinCode}>Send</IonButton>
         </>

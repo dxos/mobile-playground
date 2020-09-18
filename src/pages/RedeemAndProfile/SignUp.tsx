@@ -24,7 +24,7 @@ export default function SignUp() {
       <h5>Register</h5>
       <IonItem>
         <IonLabel position="floating">Username</IonLabel>
-        <IonInput value={username} onIonChange={e => setUsername(e.detail.value)}></IonInput>
+        <IonInput value={username} onIonChange={e => setUsername(e.detail.value!)}></IonInput>
       </IonItem>
       <IonButton expand="block" disabled={!username} onClick={() => handleSignUp(username)}>Register</IonButton>
     </div>

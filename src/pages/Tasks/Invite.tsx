@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 
 import { 
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonItem,
-  IonInput,
   IonLabel,
   IonButton,
-  IonBadge,
   IonItemDivider,
-  IonToast
 } from '@ionic/react';
 
 import { useParty, useInvitation } from '@dxos/react-client';
@@ -25,7 +16,7 @@ function PinItemText ({ pin }) {
 
 function CodeItemText ({ code }) {
   return (<>
-    <p>Code: {code}</p>
+    <p>Code:</p>
     <p className="copyable">{code}</p>
   </>);
 }
@@ -47,9 +38,11 @@ function Invite ({ party }) {
   );
 }
 
+type Invitation = {id: number}
+
 export default function InviteDialog ({ partyKey, onClose }) {
   const party = useParty(partyKey);
-  const [invitations, setInvitations] = useState([]);
+  const [invitations, setInvitations] = useState<Invitation[]>([]);
 
   const handleAddInvitation = () => {
     setInvitations([{ id: Date.now() }, ...invitations]);
