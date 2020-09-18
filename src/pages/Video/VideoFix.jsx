@@ -12,7 +12,7 @@ export const VideoFix = ({ srcObject, ...rest }) => {
     if (el.current) {
       el.current.srcObject = srcObject;
     }
-  }, [el.current]);
+  }, [el.current]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // eslint-disable-next-line jsx-a11y/media-has-caption
   return <video ref={el} {...rest} />;
