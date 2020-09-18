@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useProfile } from '@dxos/react-client';
 
-import Main from './containers/Main';
+import Main from './Main';
 
 export default function App () {
   const profile = useProfile();

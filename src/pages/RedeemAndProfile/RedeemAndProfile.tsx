@@ -12,12 +12,11 @@ import {
 
 import { useProfile, useClient } from '@dxos/react-client';
 
-import './Common.css';
-import RedeemContainer from '../task-list/containers/Redeem';
-import SignUp from '../task-list/containers/SignUp';
+import RedeemContainer from './Redeem';
+import SignUp from './SignUp';
 
 
-const Redeem: React.FC<any> = () => {
+const RedeemAndProfile: React.FC<any> = () => {
   const profile = useProfile();
   const client = useClient();
   
@@ -56,4 +55,4 @@ const Redeem: React.FC<any> = () => {
   );
 };
 
-export default Redeem;
+export default RedeemAndProfile;

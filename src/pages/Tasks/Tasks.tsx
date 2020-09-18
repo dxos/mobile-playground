@@ -9,8 +9,7 @@ import {
   IonLabel
 } from '@ionic/react';
 
-import './Common.css';
-import TaskApp from '../task-list/App';
+import TaskApp from './App';
 
 const Redeem: React.FC<any> = () => {
 

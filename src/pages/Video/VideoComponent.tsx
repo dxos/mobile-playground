@@ -14,9 +14,7 @@ import {
   IonToast
 } from '@ionic/react';
 
-import './Common.css';
-import { VideoFix } from '../video/App';
-
+import VideoFix from './VideoFix';
 
 const Home: React.FC<any> = ({connections, onSendData, receivedData, onReceivedDataRead, selfStream, onEnableVideo, streams}) => {
   const [showToast, setShowToast] = useState(false);
