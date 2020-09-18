@@ -3,11 +3,6 @@ import React, { useState } from 'react';
 import { useClient, useParties } from '@dxos/react-client';
 
 import { 
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
   IonItemDivider,
   IonLabel,
   IonButton
