@@ -36,7 +36,7 @@
     "typescript": "3.8.3"
   },
   "scripts": {
-    "init": "cap update android",
+    "init:android": "cap update android",
     "start": "react-scripts start",
     "start:ios": "ionic capacitor copy ios && cap open ios",
     "start:android": "ionic capacitor copy android && cap open android",
