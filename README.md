@@ -11,6 +11,7 @@ Install dependencies:
 
 ```bash
 yarn
+yarn build
 ```
 
 Run the React application in the browser:
@@ -70,7 +71,13 @@ NOTE: This may require java version 8, despite the fact that Android Studio ship
 
 ### Running the app
 
-1. Start the Android Studio project:
+1. Init android project:
+
+```bash
+yarn init:android
+```
+
+2. Start the Android Studio project:
 
 ```bash
 yarn start:android
