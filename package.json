@@ -40,6 +40,7 @@
     "start:ios": "ionic capacitor copy ios && cap open ios",
     "start:android": "ionic capacitor copy android && cap open android",
     "build": "react-scripts build",
+    "build:android": "ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd ..",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
