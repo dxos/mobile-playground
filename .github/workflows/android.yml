@@ -21,6 +21,7 @@ jobs:
           version: 12.15
       - run: npm install -g @ionic/cli
       - run: npm install
+      - run: yarn init
       - run: yarn build
       - run: yarn build:android
 
