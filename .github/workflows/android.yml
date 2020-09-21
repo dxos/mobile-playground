@@ -21,8 +21,8 @@ jobs:
           version: 12.15
       - run: npm install -g @ionic/cli
       - run: npm install
-      - run: yarn init:android
       - run: yarn build
+      - run: yarn init:android
       - run: yarn build:android
 
       - name: Store artifact
