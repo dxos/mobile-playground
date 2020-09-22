@@ -1,5 +1,7 @@
 # mobile-playground
 
+![Github Actions](https://github.com/dxos/mobile-playground/workflows/android/badge.svg)
+
 This repository contains a playground / showcase application making use of:
 
 - swarming library
