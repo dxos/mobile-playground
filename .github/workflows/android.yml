@@ -1,9 +1,11 @@
 name: Android
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
-  testing:
+  android:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +27,15 @@ jobs:
       - run: yarn init:android
       - run: yarn build:android
 
-      - name: Store artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-debug.apk
-          path: ./android/app/build/outputs/apk/debug/app-debug.apk
+      # - name: Store artifact
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: app-debug.apk
+      #     path: ./android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publish to IPFS and WNS
+        run: |
+          set -e
+          cd scripts
+          node publish-apk.js
+          node register-apk.js

@@ -41,7 +41,7 @@
     "start:ios": "ionic capacitor copy ios && cap open ios",
     "start:android": "ionic capacitor copy android && cap open android",
     "build": "react-scripts build",
-    "build:android": "ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd ..",
+    "build:android": "ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd .. && cp ./android/app/build/outputs/apk/debug/app-debug.apk ./ipfs-bundle/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -61,7 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "2.4.1"
+    "@capacitor/cli": "2.4.1",
+    "@dxos/cli-app": "^1.1.0-beta.9"
   },
   "description": "An Ionic project"
 }
