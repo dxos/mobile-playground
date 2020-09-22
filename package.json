@@ -61,7 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "2.4.1"
+    "@capacitor/cli": "2.4.1",
+    "@dxos/cli-app": "^1.1.0-beta.9"
   },
   "description": "An Ionic project"
 }

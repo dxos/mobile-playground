@@ -1,4 +1,4 @@
-const {registerApk} = require('./dist/es/handlers/register-apk')
+const {register} = require('@dxos/cli-app/dist/es/handlers/register')
 
 const config = {
   get: (key) => {
@@ -35,6 +35,6 @@ const argv = {
   name: ['wrn://rzadp/application/apk']
 }
 
-registerApk(config, {getAppRecord})(argv)
+register(config, {getAppRecord})(argv)
   .catch(console.error)
   .then(() => console.log('Done!'))

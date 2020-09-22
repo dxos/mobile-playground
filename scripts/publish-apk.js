@@ -1,4 +1,4 @@
-const {publish} = require('./dist/es/handlers/publish')
+const {publish} = require('@dxos/cli-app/dist/es/handlers/publish')
 
 const config = {
   get: (key) => {

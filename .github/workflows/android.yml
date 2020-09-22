@@ -34,7 +34,6 @@ jobs:
       - name: Publish to IPFS and WNS
         run: |
           set -e
-          cd cli-app
-          yarn && yarn build
+          cd scripts
           node publish-apk.js
           node register-apk.js
