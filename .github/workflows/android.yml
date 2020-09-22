@@ -30,3 +30,11 @@ jobs:
         with:
           name: app-debug.apk
           path: ./android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publish to IPFS and WNS
+        run: |
+          set -e
+          cd cli-app
+          yarn && yarn build
+          node publish-apk.js
+          node register-apk.js
