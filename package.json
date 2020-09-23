@@ -37,6 +37,7 @@
   },
   "scripts": {
     "init:android": "cap update android",
+    "init:ios": "cap update ios",
     "start": "react-scripts start",
     "start:ios": "ionic capacitor copy ios && cap open ios",
     "start:android": "ionic capacitor copy android && cap open android",

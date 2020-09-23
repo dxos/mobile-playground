@@ -43,13 +43,27 @@ The following sections describe preparing and running the app in Xcode.
 
 ### Configuring Xcode
 
-1. Start the iOS project:
+1. Initialize Xcode project:
+
+```bash
+yarn init:ios
+```
+
+2. Start the iOS project:
 
 ```bash
 yarn start:ios
 ```
 
-2. Update project's Signing & Capabilities
+3. Install pods
+
+Go to `./ios/App/` folder, and run:
+
+```bash
+pod install
+```
+
+3. Update project's Signing & Capabilities
 
 In XCode:
 
@@ -67,7 +81,7 @@ If you're seeing the following error:
 
 ![no-devices](images/no-devices.png)
 
-Then `TODO, WHAT THEN?`
+Then follow this [answer](https://apple.stackexchange.com/a/382895).
 
 ### Running the iOS app
 
